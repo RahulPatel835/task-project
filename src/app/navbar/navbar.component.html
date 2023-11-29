@@ -1,0 +1,10 @@
+<nav class="navbar" *ngIf="!loading">
+  <ul>
+    <li><a href="#">Github User Deatails</a></li>
+  </ul>
+    <input class="input-field" type="text" [(ngModel)]="inputData" name="inputData" placeholder="Enter Your Github Username" />
+    <button class="search-button" (click)="onClick()">Search</button>
+</nav>
+<div *ngIf="loading" class="loader-container">
+  <app-loader></app-loader>
+</div>
