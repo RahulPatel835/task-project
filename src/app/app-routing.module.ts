@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ProfileComponent } from './profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
-  {path:'repo-list', component:ProfileComponent},
+  {path:'', component:NavbarComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

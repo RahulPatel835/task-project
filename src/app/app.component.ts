@@ -9,11 +9,9 @@ export class AppComponent implements OnInit{
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  constructor(
-    private apiService: ApiService
-  ) {}
-
+  constructor(private apiService: ApiService) {}
+ 
   ngOnInit() {
-    this.apiService.getUser('johnpapa').subscribe(console.log);
+    // this.apiService.getUser(this.apiService.searchData).subscribe(console.log);
   }
 }

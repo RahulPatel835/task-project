@@ -1,10 +1,63 @@
 <nav class="navbar" *ngIf="!loading">
   <ul>
-    <li><a href="#">Github User Deatails</a></li>
+    <li><a class="animate-charcter" href="#">Github User Deatails</a></li>
   </ul>
     <input class="input-field" type="text" [(ngModel)]="inputData" name="inputData" placeholder="Enter Your Github Username" />
-    <button class="search-button" (click)="onClick()">Search</button>
+    <button class="search-button btn btn-outline-warning" (click)="onClick()">Search</button>
 </nav>
 <div *ngIf="loading" class="loader-container">
   <app-loader></app-loader>
 </div>
+<div id="profileContainer">
+  <div class="profile-box ">
+  <div class="top-section">
+    <div class="left">
+      <div class="avatar">
+        <img alt="avatar" src="{{userData?.avatar_url}}" />
+      </div>
+      <div class="self">
+        <h1>{{userData?.name}}</h1>
+        <h1>{{userData?.login}}</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2>About</h2>
+    <p>
+    {{userData?.bio}}
+    </p>
+  </div>
+  <div class="status">
+    <div class="status-item">
+      <h3>Followers</h3>
+      <p>{{userData?.followers}}</p>
+    </div>
+    <div class="status-item">
+      <h3>Followings</h3>
+      <p>{{userData?.following}}</p>
+    </div>
+    <div class="status-item">
+      <h3>Repos</h3>
+      <p>{{userData?.public_repos}}</p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="mt-8 main">
+  <div *ngFor="let publicRepo of publicRepos | paginate: { itemsPerPage: 9, currentPage: p }" class="w-18 child">
+    <div class="card" style="width: 20rem; height: 12rem;">
+      <div class="card-body">
+        <h5 class="card-title font-medium text-2xl text-sky-500">{{publicRepo.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary font-medium text-xs text-black">{{publicRepo.description}}</h6>
+        <p class="card-text">
+          <span class="mr-1 border-solid border-2 border-sky-500 rounded-lg bg-sky-500/100 text-white font-small text-xs">{{publicRepo.language}}</span>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+

@@ -10,17 +10,19 @@ export class ApiService {
   userData$ = this.userDataSubject.asObservable();
   Username: any;
   repo: any;
-
+  searchData: string = '';
   constructor(private httpClient: HttpClient) { }
-
+  
   getUser(githubUsername: string) {
     this.Username = githubUsername;
     return this.httpClient.get(`https://api.github.com/users/${githubUsername}`);
 
   }
+  
 
   getRepo() {
-    return this.httpClient.get(`https://api.github.com/users/${this.Username}/repos`);
+    console.log(this.searchData);
+    return this.httpClient.get(`https://api.github.com/users/${this.searchData}/repos`);
   }
 
   setUserData(data: any) {
